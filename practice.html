@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КиберЗащита | Тренажёр</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+        
+        header {
+            width: 100%;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            font-weight: 700;
+        }
+        
+        h1 span {
+            color: #4facfe;
+        }
+        
+        nav {
+            margin-top: 1.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 1.5rem;
+            padding: 0;
+            margin: 0;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255,255,255,0.15);
+        }
+        
+        nav a.active {
+            background-color: rgba(255,255,255,0.2);
+            font-weight: 600;
+        }
+        
+        .training-section {
+            margin: 2rem 0;
+        }
+        
+        .scenario {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            position: relative;
+        }
+        
+        .scenario h3 {
+            color: #1e3c72;
+            margin-top: 0;
+        }
+        
+        .scenario-content {
+            margin: 1.5rem 0;
+        }
+        
+        .options {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .option {
+            padding: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .option:hover {
+            background: #f8f9fa;
+        }
+        
+        .option.correct {
+            border-color: #2ed573;
+            background: #f1f9f6;
+        }
+        
+        .option.incorrect {
+            border-color: #ff4757;
+            background: #fff5f5;
+        }
+        
+        .feedback {
+            display: none;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 6px;
+            animation: fadeIn 0.5s;
+        }
+        
+        .feedback.correct {
+            background: #f1f9f6;
+            color: #2b6cb0;
+            display: block;
+            border-left: 4px solid #2ed573;
+        }
+        
+        .feedback.incorrect {
+            background: #fff5f5;
+            color: #b33939;
+            display: block;
+            border-left: 4px solid #ff4757;
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 10px;
+            background: #e9ecef;
+            border-radius: 10px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #1e3c72 0%, #4facfe 100%);
+            width: 0%;
+            transition: width 0.5s;
+        }
+        
+        .badges {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .badge {
+            background: white;
+            border-radius: 50px;
+            padding: 0.5rem 1.2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .badge.locked {
+            opacity: 0.5;
+        }
+        
+        .badge-icon {
+            width: 20px;
+            height: 20px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        footer {
+            width: 100%;
+            background: #343a40;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Кибер<span>Защита</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="malware.html">Примеры кода</a></li>
+                    <li><a href="practice.html" class="active">Тренажёр</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="training-section">
+            <h2>Практический тренажёр безопасности</h2>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="progress" style="width: 0%"></div>
+            </div>
+            
+            <div class="badges">
+                <div class="badge">
+                    <svg class="badge-icon" viewBox="0 0 24 24" fill="#4facfe">
+                        <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm-1.06 13.54L7.4 12l1.41-1.41 2.12 2.12 4.24-4.24 1.41 1.41-5.64 5.66z"/>
+                    </svg>
+                    Новичок безопасности
+                </div>
+                <div class="badge locked">
+                    <svg class="badge-icon" viewBox="0 0 24 24" fill="#ccc">
+                        <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10z"/>
+                    </svg>
+                    Антифишинг
+                </div>
+                <div class="badge locked">
+                    <svg class="badge-icon" viewBox="0 0 24 24" fill="#ccc">
+                        <path d="M12 3c-4.97 0-9 3.19-9 7 0 2.38 1.19 4.47 3 5.74V19c0 .55.45 1 1 1h10c.55 0 1-.45 1-1v-3.26c1.81-1.27 3-3.36 3-5.74 0-3.81-4.03-7-9-7zm0 14H5v-1.5c0-.17.02-.34.05-.5H12v2zm6-1.5v1.5h-5v-2h4.95c.03.16.05.33.05.5z"/>
+                    </svg>
+                    Мастер паролей
+                </div>
+            </div>
+            
+            <div class="scenario" id="scenario1">
+                <h3>Ситуация 1: Подозрительное письмо</h3>
+                <div class="scenario-content">
+                    <p>Вы получаете письмо от "службы безопасности банка" с просьбой подтвердить данные карты через ссылку. Письмо выглядит правдоподобно, но есть небольшие ошибки в оформлении.</p>
+                    
+                    <div class="options">
+                        <div class="option" onclick="checkAnswer(1, this, false)">Перейти по ссылке и ввести данные</div>
+                        <div class="option" onclick="checkAnswer(1, this, true)">Не отвечать, позвонить в банк по официальному номеру</div>
+                        <div class="option" onclick="checkAnswer(1, this, false)">Переслать письмо коллеге, чтобы проверил</div>
+                    </div>
+                    
+                    <div class="feedback correct">
+                        <strong>✓ Верное решение!</strong> Никогда не переходите по ссылкам в подозрительных письмах. Всегда звоните в банк по номеру с официального сайта.
+                    </div>
+                    <div class="feedback incorrect">
+                        <strong>⛔ Опасная ошибка!</strong> Это классический фишинг. Банки никогда не запрашивают конфиденциальные данные по электронной почте.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scenario" id="scenario2">
+                <h3>Ситуация 2: Обновление программы</h3>
+                <div class="scenario-content">
+                    <p>Появилось всплывающее окно с требованием срочно обновить Flash Player. Кнопка "Обновить" ведёт на незнакомый сайт.</p>
+                    
+                    <div class="options">
+                        <div class="option" onclick="checkAnswer(2, this, false)">Нажать "Обновить", чтобы не было проблем</div>
+                        <div class="option" onclick="checkAnswer(2, this, true)">Закрыть окно и обновить через официальный сайт</div>
+                        <div class="option" onclick="checkAnswer(2, this, false)">Скопировать ссылку и проверить в Virustotal</div>
+                    </div>
+                    
+                    <div class="feedback correct">
+                        <strong>✓ Правильно!</strong> Все обновления нужно скачивать только с официальных сайтов разработчиков.
+                    </div>
+                    <div class="feedback incorrect">
+                        <strong>⛔ Риск заражения!</strong> Такие окна часто распространяют вредоносное ПО. Flash Player больше не поддерживается.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scenario" id="scenario3">
+                <h3>Ситуация 3: Публичный Wi-Fi</h3>
+                <div class="scenario-content">
+                    <p>Вы в кафе и вам срочно нужно проверить банковский счёт. Доступен открытый Wi-Fi "Free_Cafe_WiFi".</p>
+                    
+                    <div class="options">
+                        <div class="option" onclick="checkAnswer(3, this, false)">Подключиться и быстро проверить баланс</div>
+                        <div class="option" onclick="checkAnswer(3, this, true)">Использовать мобильный интернет</div>
+                        <div class="option" onclick="checkAnswer(3, this, false)">Подключиться через VPN</div>
+                    </div>
+                    
+                    <div class="feedback correct">
+                        <strong>✓ Безопасный выбор!</strong> Публичные сети часто перехватывают данные. Мобильный интернет гораздо безопаснее.
+                    </div>
+                    <div class="feedback incorrect">
+                        <strong>⛔ Данные под угрозой!</strong> Злоумышленники могут перехватить ваши логин и пароль от банка.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 КиберЗащита. Практикуйтесь безопасно!</p>
+        </div>
+    </footer>
+
+    <script>
+        let completedScenarios = [];
+        
+        function checkAnswer(scenarioId, element, isCorrect) {
+            const scenario = document.getElementById(`scenario${scenarioId}`);
+            const options = scenario.querySelectorAll('.option');
+            
+            // Блокируем повторные нажатия
+            options.forEach(opt => {
+                opt.style.pointerEvents = 'none';
+            });
+            
+            if(isCorrect) {
+                element.classList.add('correct');
+                scenario.querySelector('.feedback.correct').style.display = 'block';
+                
+                if(!completedScenarios.includes(scenarioId)) {
+                    completedScenarios.push(scenarioId);
+                    updateProgress();
+                }
+            } else {
+                element.classList.add('incorrect');
+                scenario.querySelector('.feedback.incorrect').style.display = 'block';
+                
+                // Показываем правильный ответ
+                options.forEach(opt => {
+                    if(opt.getAttribute('onclick').includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+        }
+        
+        function updateProgress() {
+            const totalScenarios = 3; // Всего сценариев
+            const progress = (completedScenarios.length / totalScenarios) * 100;
+            document.getElementById('progress').style.width = `${progress}%`;
+            
+            // Разблокируем бейджи по прогрессу
+            if(completedScenarios.length >= 1) {
+                document.querySelectorAll('.badge')[1].classList.remove('locked');
+            }
+            if(completedScenarios.length >= 3) {
+                document.querySelectorAll('.badge')[2].classList.remove('locked');
+            }
+        }
+    </script>
+</body>
+</html>
