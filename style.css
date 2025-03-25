@@ -1,93 +1,148 @@
 :root {
-    --primary: #2c3e50;
-    --secondary: #1a5276;
+    --bg-color: #f4f4f4;
+    --text-color: #333;
+    --header-bg: #2c3e50;
+    --nav-bg: #34495e;
+    --card-bg: #fff;
+    --dark-bg: #2c3e50;
     --accent: #e74c3c;
-    --light: #f8f9fa;
-    --dark: #343a40;
-    --text: #212529;
+    --warning: #ffc107;
+}
+
+.dark-theme {
+    --bg-color: #1a1a1a;
+    --text-color: #f0f0f0;
+    --header-bg: #121212;
+    --nav-bg: #1e1e1e;
+    --card-bg: #2d2d2d;
+    --dark-bg: #121212;
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
-    line-height: 1.6;
-    color: var(--text);
-    background: var(--light);
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
+    background: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
 }
 
 .container {
-    width: 90%;
-    max-width: 1200px;
+    width: 80%;
     margin: 0 auto;
-    padding: 0 15px;
 }
 
 header {
-    background: var(--primary);
-    color: white;
-    padding: 1rem 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-h1, h2, h3 {
-    font-family: 'Roboto Slab', serif;
-    color: var(--primary);
+    background: var(--header-bg);
+    color: #fff;
+    padding: 2rem 0;
+    text-align: center;
 }
 
 nav ul {
     list-style: none;
     padding: 0;
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     margin: 1rem 0 0 0;
 }
 
-nav li {
-    margin-right: 1rem;
+nav ul li {
+    margin: 0 0.5rem;
 }
 
-nav a {
-    color: white;
+nav ul li a {
+    color: #fff;
     text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: 4px;
     transition: background 0.3s;
 }
 
-nav a:hover, nav a.active {
-    background: var(--secondary);
+nav ul li a:hover, nav ul li a.active {
+    background: rgba(255, 255, 255, 0.2);
 }
 
-.card {
-    background: white;
-    border-radius: 8px;
+.btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #c0392b;
+}
+
+.section {
+    padding: 3rem 0;
+}
+
+.dark-bg {
+    background: var(--dark-bg);
+    color: #fff;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.info-card {
+    background: var(--card-bg);
     padding: 1.5rem;
-    margin: 1.5rem 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.threat-card {
-    border-left: 4px solid var(--accent);
-    padding: 1rem;
-    margin: 1rem 0;
-    background: #fff9f9;
+.attack-example {
+    background: rgba(231, 76, 60, 0.1);
+    padding: 0.8rem;
+    border-left: 3px solid var(--accent);
+    margin-top: 1rem;
 }
 
-.tip-card {
-    border-left: 4px solid #3498db;
-    padding: 1rem;
-    margin: 1rem 0;
-    background: #f0f8ff;
+.protect-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.step {
+    position: relative;
+    padding-left: 3rem;
+}
+
+.step-number {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: var(--accent);
+    color: #fff;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
 }
 
 .code-block {
-    font-family: 'Consolas', monospace;
     background: #2d2d2d;
     color: #f8f8f2;
-    padding: 1rem;
-    border-radius: 4px;
-    margin: 1rem 0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem 0;
     overflow-x: auto;
+    font-family: 'Courier New', monospace;
 }
 
 .danger {
@@ -95,18 +150,25 @@ nav a:hover, nav a.active {
 }
 
 .warning {
-    border-left: 4px solid #ffc107;
-}
-
-footer {
-    background: var(--dark);
-    color: white;
-    text-align: center;
-    padding: 1.5rem 0;
-    margin-top: 2rem;
+    border-left: 4px solid var(--warning);
 }
 
 pre {
     margin: 0;
     white-space: pre-wrap;
+    line-height: 1.5;
+}
+
+footer {
+    background: var(--header-bg);
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
 }
