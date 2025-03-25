@@ -3,82 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>КиберЗащита | Предотвращение атак</title>
+    <title>КиберБезопасность | Как защититься от атак</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
-<body>
+<body class="light-theme">
     <header>
         <div class="container">
-            <h1>КиберЗащита</h1>
-            <p>Защити себя от цифровых угроз</p>
+            <h1 class="animate__animated animate__fadeIn">КиберБезопасность</h1>
+            <p>Актуальная информация о защите от цифровых угроз</p>
+            <button id="theme-toggle" class="btn">🌓 Тёмная тема</button>
         </div>
     </header>
 
     <nav>
         <ul>
-            <li><a href="#home">Главная</a></li>
-            <li><a href="#tips">Советы</a></li>
-            <li><a href="#check">Проверка</a></li>
-            <li><a href="#contact">Контакты</a></li>
+            <li><a href="#types">Типы атак</a></li>
+            <li><a href="#protect">Защита</a></li>
+            <li><a href="#cases">Примеры</a></li>
+            <li><a href="#links">Ресурсы</a></li>
         </ul>
     </nav>
 
-    <section id="home" class="hero">
+    <section id="types" class="section animate__animated animate__fadeIn">
         <div class="container">
-            <h2>Как защититься от кибератак?</h2>
-            <p>Узнайте лучшие практики безопасности в интернете.</p>
-            <a href="#tips" class="btn">Начать</a>
-        </div>
-    </section>
-
-    <section id="tips" class="tips">
-        <div class="container">
-            <h2>Советы по защите</h2>
-            <div class="tips-grid">
-                <div class="tip-card">
-                    <h3>🔒 Используйте сложные пароли</h3>
-                    <p>Пароль должен быть не менее 12 символов с цифрами и спецзнаками.</p>
+            <h2>🔍 Основные типы кибератак</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Фишинг</h3>
+                    <p>Мошеннические письма или сайты, маскирующиеся под легитимные (например, под банк).</p>
+                    <div class="attack-example">
+                        <p>Пример: письмо "от PayPal" с просьбой "подтвердить аккаунт".</p>
+                    </div>
                 </div>
-                <div class="tip-card">
-                    <h3>🔄 Обновляйте ПО</h3>
-                    <p>Регулярно обновляйте ОС и приложения, чтобы закрыть уязвимости.</p>
+                <div class="info-card">
+                    <h3>Вредоносное ПО (Malware)</h3>
+                    <p>Вирусы, трояны, ransomware (шифровальщики), которые крадут данные или блокируют систему.</p>
+                    <div class="attack-example">
+                        <p>Пример: WannaCry (2017) — заражение через уязвимость в Windows.</p>
+                    </div>
                 </div>
-                <div class="tip-card">
-                    <h3>📧 Осторожно с фишингом</h3>
-                    <p>Не переходите по подозрительным ссылкам в письмах.</p>
+                <div class="info-card">
+                    <h3>DDoS-атаки</h3>
+                    <p>Перегрузка сервера массовыми запросами, делающая сайт недоступным.</p>
+                    <div class="attack-example">
+                        <p>Пример: атака на GitHub (2018) — 1.35 Тбит/с трафика.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="check" class="check">
+    <section id="protect" class="section dark-bg">
         <div class="container">
-            <h2>Проверьте свою безопасность</h2>
-            <div class="checklist">
-                <label><input type="checkbox"> Я использую двухфакторную аутентификацию</label>
-                <label><input type="checkbox"> У меня установлен антивирус</label>
-                <label><input type="checkbox"> Я делаю резервные копии данных</label>
+            <h2>🛡️ Как защититься?</h2>
+            <div class="protect-steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <h3>Используйте менеджер паролей</h3>
+                    <p>Например, Bitwarden или KeePass. Генерируйте сложные пароли и храните их в зашифрованном виде.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <h3>Включите 2FA</h3>
+                    <p>Двухфакторная аутентификация (Google Authenticator, SMS) даже при утечке пароля не даст войти в аккаунт.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <h3>Обновляйте ПО</h3>
+                    <p>Устанавливайте патчи безопасности для ОС, браузеров и программ.</p>
+                </div>
             </div>
-            <button id="check-btn" class="btn">Проверить</button>
-            <p id="result"></p>
+            <div class="infographic">
+                <div class="infographic-item">
+                    <div class="circle">95%</div>
+                    <p>атак происходят из-за человеческих ошибок</p>
+                </div>
+                <div class="infographic-item">
+                    <div class="circle">60%</div>
+                    <p>компаний закрываются после утечки данных</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="contact" class="contact">
+    <section id="cases" class="section">
         <div class="container">
-            <h2>Остались вопросы?</h2>
-            <form>
-                <input type="text" placeholder="Ваше имя" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Ваш вопрос..."></textarea>
-                <button type="submit" class="btn">Отправить</button>
-            </form>
+            <h2>📌 Реальные случаи атак</h2>
+            <div class="case">
+                <h3>SolarWinds (2020)</h3>
+                <p>Хакеры внедрили вредоносный код в обновление ПО, что дало доступ к сетям NASA, Microsoft и других.</p>
+            </div>
+            <div class="case">
+                <h3>Colonial Pipeline (2021)</h3>
+                <p>Ransomware-атака остановила работу крупнейшего топливопровода в США. Выкуп — $4.4 млн.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="links" class="section dark-bg">
+        <div class="container">
+            <h2>🔗 Полезные ресурсы</h2>
+            <ul class="resources">
+                <li><a href="https://www.cisa.gov/" target="_blank">CISA (US Cybersecurity Agency)</a></li>
+                <li><a href="https://habr.com/ru/hub/infosecurity/" target="_blank">Хаб "Информационная безопасность" на Хабре</a></li>
+                <li><a href="https://www.kaspersky.ru/resource-center" target="_blank">Центр знаний Лаборатории Касперского</a></li>
+            </ul>
         </div>
     </section>
 
     <footer>
-        <p>© 2024 КиберЗащита. Все права защищены.</p>
+        <div class="container">
+            <p>© 2024 КиберБезопасность | Актуальная информация на <span id="current-date"></span></p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
