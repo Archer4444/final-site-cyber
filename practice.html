@@ -135,14 +135,12 @@
         .feedback.correct {
             background: #f1f9f6;
             color: #2b6cb0;
-            display: block;
             border-left: 4px solid #2ed573;
         }
         
         .feedback.incorrect {
             background: #fff5f5;
             color: #b33939;
-            display: block;
             border-left: 4px solid #ff4757;
         }
         
@@ -323,15 +321,22 @@
         function checkAnswer(scenarioId, element, isCorrect) {
             const scenario = document.getElementById(`scenario${scenarioId}`);
             const options = scenario.querySelectorAll('.option');
+            const correctFeedback = scenario.querySelector('.feedback.correct');
+            const incorrectFeedback = scenario.querySelector('.feedback.incorrect');
+            
+            // Сначала скрываем все сообщения
+            correctFeedback.style.display = 'none';
+            incorrectFeedback.style.display = 'none';
             
             // Блокируем повторные нажатия
             options.forEach(opt => {
                 opt.style.pointerEvents = 'none';
+                opt.classList.remove('correct', 'incorrect');
             });
             
             if(isCorrect) {
                 element.classList.add('correct');
-                scenario.querySelector('.feedback.correct').style.display = 'block';
+                correctFeedback.style.display = 'block';
                 
                 if(!completedScenarios.includes(scenarioId)) {
                     completedScenarios.push(scenarioId);
@@ -339,7 +344,7 @@
                 }
             } else {
                 element.classList.add('incorrect');
-                scenario.querySelector('.feedback.incorrect').style.display = 'block';
+                incorrectFeedback.style.display = 'block';
                 
                 // Показываем правильный ответ
                 options.forEach(opt => {
@@ -351,7 +356,7 @@
         }
         
         function updateProgress() {
-            const totalScenarios = 3; // Всего сценариев
+            const totalScenarios = 3;
             const progress = (completedScenarios.length / totalScenarios) * 100;
             document.getElementById('progress').style.width = `${progress}%`;
             
