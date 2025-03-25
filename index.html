@@ -8,8 +8,8 @@
         body {
             font-family: 'Segoe UI', system-ui, sans-serif;
             line-height: 1.6;
-            color: #2d3748;
-            background-color: #f7fafc;
+            color: #333;
+            background-color: #f8f9fa;
             margin: 0;
             padding: 0;
             display: flex;
@@ -20,27 +20,28 @@
         
         .container {
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
             padding: 0 20px;
         }
         
         header {
             width: 100%;
-            background-color: #1a365d;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
             padding: 2rem 0;
             text-align: center;
             margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
         h1 {
             font-size: 2.5rem;
             margin: 0;
-            color: white;
+            font-weight: 700;
         }
         
         h1 span {
-            color: #63b3ed;
+            color: #4facfe;
         }
         
         nav {
@@ -53,58 +54,95 @@
             list-style: none;
             gap: 1.5rem;
             padding: 0;
+            margin: 0;
         }
         
         nav a {
             color: white;
             text-decoration: none;
             font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: background 0.3s;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            transition: all 0.3s;
         }
         
         nav a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255,255,255,0.15);
         }
         
         nav a.active {
-            background-color: #2b6cb0;
+            background-color: rgba(255,255,255,0.2);
+            font-weight: 600;
         }
         
-        .hero {
-            text-align: center;
+        main {
+            width: 100%;
+        }
+        
+        .info-section {
             margin: 3rem 0;
         }
         
-        .hero h2 {
+        h2 {
             font-size: 2rem;
-            color: #2b6cb0;
-            margin-bottom: 1rem;
+            color: #1e3c72;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e9ecef;
         }
         
-        .card {
-            background-color: white;
+        .info-card {
+            background: white;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 2rem;
             margin-bottom: 2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
         }
         
         .threat-card {
-            border-left: 4px solid #e53e3e;
-            padding: 1rem;
+            border-left: 4px solid #ff4757;
+            padding: 1.5rem;
             margin: 1.5rem 0;
             background-color: #fff5f5;
         }
         
+        .protection-card {
+            border-left: 4px solid #2ed573;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            background-color: #f1f9f6;
+        }
+        
+        .stat-card {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-right: 1.5rem;
+            min-width: 80px;
+        }
+        
+        .stat-text {
+            flex: 1;
+        }
+        
         footer {
             width: 100%;
-            background-color: #1a365d;
+            background: #343a40;
             color: white;
             text-align: center;
             padding: 1.5rem 0;
             margin-top: auto;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -122,35 +160,117 @@
     </header>
 
     <main class="container">
-        <section class="hero">
-            <h2>Современные киберугрозы и защита</h2>
-            <p>Узнайте как защитить себя и свой бизнес от цифровых атак</p>
-        </section>
-
-        <section class="card">
-            <h2>Основные угрозы</h2>
-            
-            <div class="threat-card">
-                <h3>Фишинг</h3>
-                <p>Мошеннические письма, имитирующие официальные организации с целью кражи данных.</p>
-                <p><strong>Пример:</strong> Письмо "от банка" с просьбой подтвердить данные карты</p>
+        <section class="info-section">
+            <div class="info-card">
+                <h2>Современные киберугрозы</h2>
+                
+                <div class="threat-card">
+                    <h3>Фишинг</h3>
+                    <p>Сложные схемы мошенничества, где злоумышленники маскируются под доверенные организации. Новые методы включают:</p>
+                    <ul>
+                        <li>СМС-фишинг (smishing) с поддельными уведомлениями</li>
+                        <li>Голосовой фишинг (vishing) через телефонные звонки</li>
+                        <li>Целевые атаки на сотрудников (spear phishing)</li>
+                    </ul>
+                </div>
+                
+                <div class="threat-card">
+                    <h3>Вредоносное ПО</h3>
+                    <p>Эволюционирующие угрозы:</p>
+                    <ul>
+                        <li>Файловые шифровальщики (Ransomware 2.0)</li>
+                        <li>Криптоджекеры для майнинга криптовалют</li>
+                        <li>Шпионские программы нового поколения</li>
+                        <li>Ботнеты IoT-устройств</li>
+                    </ul>
+                </div>
             </div>
             
-            <div class="threat-card">
-                <h3>Вредоносное ПО</h3>
-                <p>Программы, которые могут:</p>
-                <ul>
-                    <li>Красть ваши данные</li>
-                    <li>Шифровать файлы (ransomware)</li>
-                    <li>Использовать ваш компьютер для атак</li>
-                </ul>
+            <div class="info-card">
+                <h2>Статистика угроз</h2>
+                
+                <div class="stat-card">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-text">кибератак становятся возможными из-за человеческих ошибок</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">+350%</div>
+                    <div class="stat-text">рост атак на облачные сервисы за последние 2 года</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">4.35млн$</div>
+                    <div class="stat-text">средний ущерб от утечки данных в 2023 году</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="info-section">
+            <div class="info-card">
+                <h2>Комплексная защита</h2>
+                
+                <div class="protection-card">
+                    <h3>Технические меры</h3>
+                    <ul>
+                        <li>Многофакторная аутентификация (MFA) для всех сервисов</li>
+                        <li>Регулярное обновление ПО и систем безопасности</li>
+                        <li>Шифрование данных как в хранилищах, так и при передаче</li>
+                        <li>Системы обнаружения вторжений (IDS/IPS)</li>
+                    </ul>
+                </div>
+                
+                <div class="protection-card">
+                    <h3>Организационные меры</h3>
+                    <ul>
+                        <li>Политика регулярного резервного копирования (правило 3-2-1)</li>
+                        <li>Обучение сотрудников киберграмотности</li>
+                        <li>План реагирования на инциденты</li>
+                        <li>Регулярные аудиты безопасности</li>
+                    </ul>
+                </div>
+                
+                <div class="protection-card">
+                    <h3>Персональная защита</h3>
+                    <ul>
+                        <li>Использование менеджеров паролей (Bitwarden, 1Password)</li>
+                        <li>Аппаратные ключи безопасности (YubiKey, Titan)</li>
+                        <li>Виртуальные карты для онлайн-платежей</li>
+                        <li>Регулярная проверка утечек данных (Have I Been Pwned)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="info-section">
+            <div class="info-card">
+                <h2>Тенденции 2024</h2>
+                <div class="threat-card">
+                    <h3>AI-атаки</h3>
+                    <p>Использование искусственного интеллекта для:</p>
+                    <ul>
+                        <li>Генерации убедительных фишинговых сообщений</li>
+                        <li>Обхода CAPTCHA и систем распознавания</li>
+                        <li>Автоматизации поиска уязвимостей</li>
+                    </ul>
+                </div>
+                
+                <div class="protection-card">
+                    <h3>AI-защита</h3>
+                    <p>Применение ИИ в защитных системах:</p>
+                    <ul>
+                        <li>Анализ поведения пользователей</li>
+                        <li>Прогнозирование атак</li>
+                        <li>Автоматическое исправление уязвимостей</li>
+                    </ul>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>© 2024 КиберЗащита. Все права защищены.</p>
+            <p>© 2024 КиберЗащита. Все материалы защищены.</p>
         </div>
     </footer>
 </body>
