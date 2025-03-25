@@ -1,124 +1,184 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>КиберБезопасность | Как защититься от атак</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <title>КиберЗащита | Простые правила безопасности</title>
+    <style>
+        :root {
+            --bg-light: #f8f9fa;
+            --text-dark: #212529;
+            --accent-blue: #0d6efd;
+            --accent-red: #dc3545;
+            --card-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 5px solid var(--accent-red);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+        
+        h2 {
+            color: #1e3c72;
+            border-left: 4px solid var(--accent-red);
+            padding-left: 15px;
+            margin-top: 2.5rem;
+        }
+        
+        .article-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .threat-card {
+            border-left: 3px solid var(--accent-red);
+            background-color: #fff9f9;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .tip-box {
+            background-color: #f0f8ff;
+            border-left: 3px solid var(--accent-blue);
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            background-color: #343a40;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
-<body class="light-theme">
+<body>
     <header>
         <div class="container">
-            <h1 class="animate__animated animate__fadeIn">КиберБезопасность</h1>
-            <p>Актуальная информация о защите от цифровых угроз</p>
-            <button id="theme-toggle" class="btn">🌓 Тёмная тема</button>
+            <h1>КиберЗащита</h1>
+            <p>Практические советы по цифровой безопасности</p>
         </div>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#types">Типы атак</a></li>
-            <li><a href="#protect">Защита</a></li>
-            <li><a href="#cases">Примеры</a></li>
-            <li><a href="#links">Ресурсы</a></li>
-        </ul>
-    </nav>
+    <div class="container">
+        <article class="article-card">
+            <h2>Основные киберугрозы</h2>
+            
+            <div class="threat-card">
+                <h3>Фишинг</h3>
+                <p>Мошеннические письма, сообщения или сайты, имитирующие легитимные организации. Цель - похищение учетных данных.</p>
+                <p><strong>Пример:</strong> Письмо "от банка" с просьбой срочно обновить данные карты.</p>
+            </div>
+            
+            <div class="threat-card">
+                <h3>Вредоносное ПО</h3>
+                <p>Вирусы, трояны, шпионские программы, которые могут:</p>
+                <ul>
+                    <li>Шифровать ваши файлы (ransomware)</li>
+                    <li>Красть пароли и банковские данные</li>
+                    <li>Использовать ваш компьютер для атак на другие системы</li>
+                </ul>
+            </div>
+        </article>
 
-    <section id="types" class="section animate__animated animate__fadeIn">
-        <div class="container">
-            <h2>🔍 Основные типы кибератак</h2>
-            <div class="info-grid">
-                <div class="info-card">
-                    <h3>Фишинг</h3>
-                    <p>Мошеннические письма или сайты, маскирующиеся под легитимные (например, под банк).</p>
-                    <div class="attack-example">
-                        <p>Пример: письмо "от PayPal" с просьбой "подтвердить аккаунт".</p>
-                    </div>
-                </div>
-                <div class="info-card">
-                    <h3>Вредоносное ПО (Malware)</h3>
-                    <p>Вирусы, трояны, ransomware (шифровальщики), которые крадут данные или блокируют систему.</p>
-                    <div class="attack-example">
-                        <p>Пример: WannaCry (2017) — заражение через уязвимость в Windows.</p>
-                    </div>
-                </div>
-                <div class="info-card">
-                    <h3>DDoS-атаки</h3>
-                    <p>Перегрузка сервера массовыми запросами, делающая сайт недоступным.</p>
-                    <div class="attack-example">
-                        <p>Пример: атака на GitHub (2018) — 1.35 Тбит/с трафика.</p>
-                    </div>
-                </div>
+        <article class="article-card">
+            <h2>7 обязательных мер защиты</h2>
+            
+            <div class="tip-box">
+                <h3>1. Надежные пароли</h3>
+                <p>Используйте:</p>
+                <ul>
+                    <li>Не менее 12 символов</li>
+                    <li>Комбинацию букв (верхний/нижний регистр), цифр и спецсимволов</li>
+                    <li>Уникальные пароли для каждого сервиса</li>
+                </ul>
+                <p>Рекомендуем менеджеры паролей: Bitwarden, KeePass, 1Password.</p>
             </div>
-        </div>
-    </section>
+            
+            <div class="tip-box">
+                <h3>2. Двухфакторная аутентификация (2FA)</h3>
+                <p>Добавляет второй уровень защиты даже при утечке пароля. Включите 2FA везде, где возможно:</p>
+                <ul>
+                    <li>Приложения-аутентификаторы (Google Authenticator, Microsoft Authenticator)</li>
+                    <li>Аппаратные ключи безопасности (YubiKey)</li>
+                    <li>SMS (менее безопасный вариант)</li>
+                </ul>
+            </div>
+            
+            <div class="tip-box">
+                <h3>3. Регулярные обновления</h3>
+                <p>Всегда обновляйте:</p>
+                <ul>
+                    <li>Операционную систему</li>
+                    <li>Браузеры и расширения</li>
+                    <li>Антивирусное ПО</li>
+                    <li>Роутер и IoT-устройства</li>
+                </ul>
+            </div>
+        </article>
 
-    <section id="protect" class="section dark-bg">
-        <div class="container">
-            <h2>🛡️ Как защититься?</h2>
-            <div class="protect-steps">
-                <div class="step">
-                    <span class="step-number">1</span>
-                    <h3>Используйте менеджер паролей</h3>
-                    <p>Например, Bitwarden или KeePass. Генерируйте сложные пароли и храните их в зашифрованном виде.</p>
-                </div>
-                <div class="step">
-                    <span class="step-number">2</span>
-                    <h3>Включите 2FA</h3>
-                    <p>Двухфакторная аутентификация (Google Authenticator, SMS) даже при утечке пароля не даст войти в аккаунт.</p>
-                </div>
-                <div class="step">
-                    <span class="step-number">3</span>
-                    <h3>Обновляйте ПО</h3>
-                    <p>Устанавливайте патчи безопасности для ОС, браузеров и программ.</p>
-                </div>
-            </div>
-            <div class="infographic">
-                <div class="infographic-item">
-                    <div class="circle">95%</div>
-                    <p>атак происходят из-за человеческих ошибок</p>
-                </div>
-                <div class="infographic-item">
-                    <div class="circle">60%</div>
-                    <p>компаний закрываются после утечки данных</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="cases" class="section">
-        <div class="container">
-            <h2>📌 Реальные случаи атак</h2>
-            <div class="case">
-                <h3>SolarWinds (2020)</h3>
-                <p>Хакеры внедрили вредоносный код в обновление ПО, что дало доступ к сетям NASA, Microsoft и других.</p>
-            </div>
-            <div class="case">
-                <h3>Colonial Pipeline (2021)</h3>
-                <p>Ransomware-атака остановила работу крупнейшего топливопровода в США. Выкуп — $4.4 млн.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="links" class="section dark-bg">
-        <div class="container">
-            <h2>🔗 Полезные ресурсы</h2>
-            <ul class="resources">
-                <li><a href="https://www.cisa.gov/" target="_blank">CISA (US Cybersecurity Agency)</a></li>
-                <li><a href="https://habr.com/ru/hub/infosecurity/" target="_blank">Хаб "Информационная безопасность" на Хабре</a></li>
-                <li><a href="https://www.kaspersky.ru/resource-center" target="_blank">Центр знаний Лаборатории Касперского</a></li>
-            </ul>
-        </div>
-    </section>
+        <article class="article-card">
+            <h2>Реальные случаи атак</h2>
+            
+            <h3>Колониальный трубопровод (2021)</h3>
+            <p>Атака ransomware парализовала крупнейший топливопровод в США. Компания заплатила $4.4 млн выкупа.</p>
+            
+            <h3>Атака на SolarWinds (2020)</h3>
+            <p>Хакеры внедрили бэкдор в обновление ПО, что позволило получить доступ к сетям правительства США и Fortune 500 компаний.</p>
+            
+            <h3>Утечка данных Facebook (2021)</h3>
+            <p>Персональные данные 533 млн пользователей оказались в открытом доступе из-за уязвимости в API.</p>
+        </article>
+    </div>
 
     <footer>
         <div class="container">
-            <p>© 2024 КиберБезопасность | Актуальная информация на <span id="current-date"></span></p>
+            <p>© 2023 КиберЗащита | Актуальная информация на <span id="current-date"></span></p>
+            <p>Для связи: security@example.com</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Добавляем текущую дату в футер
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('ru-RU', options);
+    </script>
 </body>
 </html>
