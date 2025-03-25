@@ -1,1 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КиберБезопасность | Как защититься от атак</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body class="light-theme">
+    <header>
+        <div class="container">
+            <h1 class="animate__animated animate__fadeIn">КиберБезопасность</h1>
+            <p>Актуальная информация о защите от цифровых угроз</p>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Главная</a></li>
+                    <li><a href="malware.html">Примеры кода</a></li>
+                    <li><button id="theme-toggle" class="btn">🌓 Тёмная тема</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
+    <section id="types" class="section animate__animated animate__fadeIn">
+        <div class="container">
+            <h2>🔍 Основные типы кибератак</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Фишинг</h3>
+                    <p>Мошеннические письма или сайты, маскирующиеся под легитимные (например, под банк).</p>
+                    <div class="attack-example">
+                        <p>Пример: письмо "от PayPal" с просьбой "подтвердить аккаунт".</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <h3>Вредоносное ПО (Malware)</h3>
+                    <p>Вирусы, трояны, ransomware (шифровальщики), которые крадут данные или блокируют систему.</p>
+                    <div class="attack-example">
+                        <p>Пример: WannaCry (2017) — заражение через уязвимость в Windows.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="protect" class="section dark-bg">
+        <div class="container">
+            <h2>🛡️ Как защититься?</h2>
+            <div class="protect-steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <h3>Используйте менеджер паролей</h3>
+                    <p>Например, Bitwarden или KeePass. Генерируйте сложные пароли и храните их в зашифрованном виде.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <h3>Включите 2FA</h3>
+                    <p>Двухфакторная аутентификация (Google Authenticator, SMS) даже при утечке пароля не даст войти в аккаунт.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cases" class="section">
+        <div class="container">
+            <h2>📌 Реальные случаи атак</h2>
+            <div class="case">
+                <h3>SolarWinds (2020)</h3>
+                <p>Хакеры внедрили вредоносный код в обновление ПО, что дало доступ к сетям NASA, Microsoft и других.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 КиберБезопасность | Актуальная информация на <span id="current-date"></span></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
