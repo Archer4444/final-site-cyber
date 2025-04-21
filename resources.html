@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КиберЗащита | Ресурсы</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a56db;
+            --primary-dark: #1e3c72;
+            --secondary: #4facfe;
+            --danger: #ff4757;
+            --success: #2ed573;
+            --warning: #ffa502;
+            --dark: #343a40;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--light);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            padding: 0 20px;
+            margin: 0 auto;
+        }
+        
+        header {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 2.5rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--success));
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        
+        h1 span {
+            color: var(--secondary);
+            position: relative;
+        }
+        
+        h1 span::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 3px;
+        }
+        
+        nav {
+            margin-top: 1.8rem;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 1rem;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.7rem 1.8rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.05rem;
+            border: 2px solid transparent;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+        
+        nav a.active {
+            background-color: rgba(255,255,255,0.25);
+            border-color: rgba(255,255,255,0.4);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        main {
+            width: 100%;
+            padding-bottom: 2rem;
+        }
+        
+        .resources-section {
+            margin: 3.5rem 0;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid #e9ecef;
+            position: relative;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+        
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .resource-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+        
+        .card-image {
+            height: 160px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .resource-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .resource-card h3 {
+            color: var(--primary-dark);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .resource-card h3 i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .resource-card ul {
+            padding-left: 1.2rem;
+            margin-bottom: 0;
+        }
+        
+        .resource-card li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+        
+        .resource-card li::before {
+            content: "•";
+            color: var(--secondary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+            left: 0;
+        }
+        
+        .resource-card a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .resource-card a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+        
+        .cybermap-container {
+            margin: 3rem 0;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        
+        .cybermap-container iframe {
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid #e9ecef;
+        }
+        
+        footer {
+            width: 100%;
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: auto;
+            font-size: 0.95rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .card-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Кибер<span>Защита</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i>Главная</a></li>
+                    <li><a href="malware.html"><i class="fas fa-code"></i>Примеры кода</a></li>
+                    <li><a href="practice.html"><i class="fas fa-shield-alt"></i>Тренажёр</a></li>
+                    <li><a href="resources.html" class="active"><i class="fas fa-book"></i>Ресурсы</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="resources-section">
+            <h2><i class="fas fa-book-open"></i> Полезные ресурсы</h2>
+            
+            <div class="resource-grid">
+                <!-- Карточка 1 -->
+                <div class="resource-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Нормативные документы">
+                    </div>
+                    <div class="card-content">
+                        <h3><i class="fas fa-file-alt"></i> Нормативные документы</h3>
+                        <ul>
+                            <li><a href="https://gdpr-info.eu/" target="_blank">GDPR (ЕС)</a> - Общий регламент по защите данных</li>
+                            <li><a href="http://www.consultant.ru/document/cons_doc_LAW_61801/" target="_blank">ФЗ-152 (РФ)</a> - О персональных данных</li>
+                            <li><a href="https://www.pcisecuritystandards.org/" target="_blank">PCI DSS</a> - Стандарт безопасности платежей</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Карточка 2 -->
+                <div class="resource-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Инструменты безопасности">
+                    </div>
+                    <div class="card-content">
+                        <h3><i class="fas fa-tools"></i> Инструменты</h3>
+                        <ul>
+                            <li><a href="https://haveibeenpwned.com/" target="_blank">Have I Been Pwned</a> - Проверка утечек</li>
+                            <li><a href="https://www.virustotal.com/" target="_blank">VirusTotal</a> - Проверка файлов</li>
+                            <li><a href="https://bitwarden.com/" target="_blank">Bitwarden</a> - Менеджер паролей</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Карточка 3 -->
+                <div class="resource-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Обучение">
+                    </div>
+                    <div class="card-content">
+                        <h3><i class="fas fa-graduation-cap"></i> Обучение</h3>
+                        <ul>
+                            <li><a href="https://www.cybrary.it/" target="_blank">Cybrary</a> - Бесплатные курсы</li>
+                            <li><a href="https://stepik.org/course/Безопасность-в-интернете" target="_blank">Stepik</a> - Основы ИБ</li>
+                            <li><a href="https://xakep.ru/" target="_blank">Журнал "Хакер"</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Карточка 4 -->
+                <div class="resource-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Сообщества">
+                    </div>
+                    <div class="card-content">
+                        <h3><i class="fas fa-users"></i> Сообщества</h3>
+                        <ul>
+                            <li><a href="https://habr.com/ru/hub/infosecurity/" target="_blank">Habr</a> - Инфобезопасность</li>
+                            <li><a href="https://www.reddit.com/r/cybersecurity/" target="_blank">Reddit</a> - Cybersecurity</li>
+                            <li><a href="https://t.me/cybersecurity_russia" target="_blank">Telegram</a> - Кибербезопасность</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Карточка 5 -->
+                <div class="resource-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Книги">
+                    </div>
+                    <div class="card-content">
+                        <h3><i class="fas fa-book"></i> Книги</h3>
+                        <ul>
+                            <li>"Искусство обмана" - Кевин Митник</li>
+                            <li>"Безопасность в интернете" - Лаборатория Касперского</li>
+                            <li>"The Web Application Hacker's Handbook"</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Карточка 6 -->
+                <div class="resource-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Мониторинг угроз">
+                    </div>
+                    <div class="card-content">
+                        <h3><i class="fas fa-newspaper"></i> Мониторинг угроз</h3>
+                        <ul>
+                            <li><a href="https://www.cisa.gov/" target="_blank">CISA (США)</a></li>
+                            <li><a href="https://www.bleepingcomputer.com/" target="_blank">BleepingComputer</a></li>
+                            <li><a href="https://www.kaspersky.ru/resource-center" target="_blank">Kaspersky</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Карта кибератак -->
+            <div class="cybermap-container">
+                <h3><i class="fas fa-globe"></i> Карта кибератак в реальном времени</h3>
+                <p>Наблюдайте за глобальными кибератаками прямо сейчас</p>
+                <iframe src="https://cybermap.kaspersky.com/" width="100%" height="500px" frameborder="0"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-vk"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+            <p>© 2024 КиберЗащита. Все ресурсы проверены на безопасность.</p>
+            <p><a href="#" style="color: var(--secondary); text-decoration: none;">Политика конфиденциальности</a> | <a href="#" style="color: var(--secondary); text-decoration: none;">Контакты</a></p>
+        </div>
+    </footer>
+</body>
+</html>
