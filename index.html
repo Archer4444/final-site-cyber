@@ -4,145 +4,392 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>КиберЗащита | Главная</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #1a56db;
+            --primary-dark: #1e3c72;
+            --secondary: #4facfe;
+            --danger: #ff4757;
+            --success: #2ed573;
+            --warning: #ffa502;
+            --dark: #343a40;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+        }
+        
         body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #f8f9fa;
+            background-color: var(--light);
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
-            align-items: center;
             min-height: 100vh;
         }
         
         .container {
             width: 100%;
-            max-width: 900px;
+            max-width: 1100px;
             padding: 0 20px;
+            margin: 0 auto;
         }
         
         header {
             width: 100%;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
             color: white;
-            padding: 2rem 0;
+            padding: 2.5rem 0;
             text-align: center;
             margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--success));
         }
         
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin: 0;
-            font-weight: 700;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
         
         h1 span {
-            color: #4facfe;
+            color: var(--secondary);
+            position: relative;
+        }
+        
+        h1 span::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 3px;
         }
         
         nav {
-            margin-top: 1.5rem;
+            margin-top: 1.8rem;
         }
         
         nav ul {
             display: flex;
             justify-content: center;
             list-style: none;
-            gap: 1.5rem;
+            gap: 1rem;
             padding: 0;
             margin: 0;
+            flex-wrap: wrap;
         }
         
         nav a {
             color: white;
             text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
-            transition: all 0.3s;
+            font-weight: 600;
+            padding: 0.7rem 1.8rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.05rem;
+            border: 2px solid transparent;
         }
         
         nav a:hover {
             background-color: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
         }
         
         nav a.active {
-            background-color: rgba(255,255,255,0.2);
-            font-weight: 600;
+            background-color: rgba(255,255,255,0.25);
+            border-color: rgba(255,255,255,0.4);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         
         main {
             width: 100%;
+            padding-bottom: 2rem;
         }
         
         .info-section {
-            margin: 3rem 0;
+            margin: 3.5rem 0;
         }
         
         h2 {
-            font-size: 2rem;
-            color: #1e3c72;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #e9ecef;
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid #e9ecef;
+            position: relative;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
         }
         
         .info-card {
             background: white;
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
         
         .threat-card {
-            border-left: 4px solid #ff4757;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
+            border-left: 5px solid var(--danger);
+            padding: 1.8rem;
             background-color: #fff5f5;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .threat-card:hover {
+            transform: translateX(5px);
         }
         
         .protection-card {
-            border-left: 4px solid #2ed573;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
+            border-left: 5px solid var(--success);
+            padding: 1.8rem;
             background-color: #f1f9f6;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .protection-card:hover {
+            transform: translateX(5px);
+        }
+        
+        .trend-card {
+            border-left: 5px solid var(--secondary);
+            padding: 1.8rem;
+            background-color: #f0f7ff;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .trend-card:hover {
+            transform: translateX(5px);
         }
         
         .stat-card {
             display: flex;
             align-items: center;
             background: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-radius: 10px;
+            padding: 1.8rem;
+            margin: 1.2rem 0;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         
         .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1e3c72;
-            margin-right: 1.5rem;
-            min-width: 80px;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-right: 1.8rem;
+            min-width: 100px;
+            text-align: center;
         }
         
         .stat-text {
             flex: 1;
+            font-size: 1.1rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h3 i {
+            font-size: 1.3rem;
+        }
+        
+        ul {
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.7rem;
+            position: relative;
+        }
+        
+        li::before {
+            content: "•";
+            color: var(--secondary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+            left: 0;
+        }
+        
+        .alert-banner {
+            background: linear-gradient(90deg, var(--warning), #ffcc00);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .newsletter {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 3rem;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .newsletter h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 10px;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        .newsletter-form input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.2);
+        }
+        
+        .newsletter-form button {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 86, 219, 0.3);
         }
         
         footer {
             width: 100%;
-            background: #343a40;
+            background: var(--dark);
             color: white;
             text-align: center;
-            padding: 1.5rem 0;
+            padding: 2rem 0;
             margin-top: auto;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form button {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -152,126 +399,224 @@
             <h1>Кибер<span>Защита</span></h1>
             <nav>
                 <ul>
-                    <li><a href="index.html" class="active">Главная</a></li>
-                    <li><a href="malware.html">Примеры кода</a></li>
-                    <li><a href="practice.html">Практика</a></li>
+                    <li><a href="index.html" class="active"><i class="fas fa-home"></i>Главная</a></li>
+                    <li><a href="malware.html"><i class="fas fa-code"></i>Примеры кода</a></li>
+                    <li><a href="practice.html"><i class="fas fa-laptop-code"></i>Практика</a></li>
+                    <li><a href="#"><i class="fas fa-book"></i>Ресурсы</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main class="container">
+        <div class="alert-banner">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>Внимание! Участились случаи фишинговых атак через мессенджеры. Будьте бдительны!</span>
+        </div>
+        
         <section class="info-section">
             <div class="info-card">
-                <h2>Современные киберугрозы</h2>
+                <h2><i class="fas fa-shield-alt"></i>Современные киберугрозы</h2>
                 
-                <div class="threat-card">
-                    <h3>Фишинг</h3>
-                    <p>Сложные схемы мошенничества, где злоумышленники маскируются под доверенные организации. Новые методы включают:</p>
-                    <ul>
-                        <li>СМС-фишинг (smishing) с поддельными уведомлениями</li>
-                        <li>Голосовой фишинг (vishing) через телефонные звонки</li>
-                        <li>Целевые атаки на сотрудников (spear phishing)</li>
-                    </ul>
-                </div>
-                
-                <div class="threat-card">
-                    <h3>Вредоносное ПО</h3>
-                    <p>Эволюционирующие угрозы:</p>
-                    <ul>
-                        <li>Файловые шифровальщики (Ransomware 2.0)</li>
-                        <li>Криптоджекеры для майнинга криптовалют</li>
-                        <li>Шпионские программы нового поколения</li>
-                        <li>Ботнеты IoT-устройств</li>
-                    </ul>
+                <div class="card-grid">
+                    <div class="threat-card">
+                        <h3><i class="fas fa-fish"></i>Фишинг</h3>
+                        <p>Сложные схемы мошенничества, где злоумышленники маскируются под доверенные организации:</p>
+                        <ul>
+                            <li>СМС-фишинг (smishing) с поддельными уведомлениями</li>
+                            <li>Голосовой фишинг (vishing) через телефонные звонки</li>
+                            <li>Целевые атаки на сотрудников (spear phishing)</li>
+                            <li>Фишинг в соцсетях через фейковые аккаунты</li>
+                            <li>QR-код фишинг (quishing) - поддельные QR-коды</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="threat-card">
+                        <h3><i class="fas fa-bug"></i>Вредоносное ПО</h3>
+                        <p>Эволюционирующие угрозы:</p>
+                        <ul>
+                            <li>Файловые шифровальщики (Ransomware 2.0)</li>
+                            <li>Криптоджекеры для майнинга криптовалют</li>
+                            <li>Шпионские программы нового поколения</li>
+                            <li>Ботнеты IoT-устройств</li>
+                            <li>Файрвол-обходные технологии</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="threat-card">
+                        <h3><i class="fas fa-cloud"></i>Облачные угрозы</h3>
+                        <p>Новые риски облачных технологий:</p>
+                        <ul>
+                            <li>Неправильные настройки облачных сервисов</li>
+                            <li>Утечки данных через API</li>
+                            <li>Атаки на цепочки поставок облачных приложений</li>
+                            <li>Компрометация облачных учетных записей</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             
             <div class="info-card">
-                <h2>Статистика угроз</h2>
+                <h2><i class="fas fa-chart-line"></i>Статистика угроз 2024</h2>
                 
                 <div class="stat-card">
                     <div class="stat-number">95%</div>
-                    <div class="stat-text">кибератак становятся возможными из-за человеческих ошибок</div>
+                    <div class="stat-text">кибератак становятся возможными из-за человеческих ошибок (по данным Verizon DBIR 2024)</div>
                 </div>
                 
                 <div class="stat-card">
                     <div class="stat-number">+350%</div>
-                    <div class="stat-text">рост атак на облачные сервисы за последние 2 года</div>
+                    <div class="stat-text">рост атак на облачные сервисы за последние 2 года (Gartner 2024)</div>
                 </div>
                 
                 <div class="stat-card">
                     <div class="stat-number">4.35млн$</div>
-                    <div class="stat-text">средний ущерб от утечки данных в 2023 году</div>
+                    <div class="stat-text">средний ущерб от утечки данных в 2023 году (IBM Cost of Data Breach Report)</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">1/3</div>
+                    <div class="stat-text">организаций сталкиваются с ransomware-атаками ежеквартально (Sophos State of Ransomware 2024)</div>
                 </div>
             </div>
         </section>
         
         <section class="info-section">
             <div class="info-card">
-                <h2>Комплексная защита</h2>
+                <h2><i class="fas fa-lock"></i>Комплексная защита</h2>
                 
-                <div class="protection-card">
-                    <h3>Технические меры</h3>
-                    <ul>
-                        <li>Многофакторная аутентификация (MFA) для всех сервисов</li>
-                        <li>Регулярное обновление ПО и систем безопасности</li>
-                        <li>Шифрование данных как в хранилищах, так и при передаче</li>
-                        <li>Системы обнаружения вторжений (IDS/IPS)</li>
-                    </ul>
-                </div>
-                
-                <div class="protection-card">
-                    <h3>Организационные меры</h3>
-                    <ul>
-                        <li>Политика регулярного резервного копирования (правило 3-2-1)</li>
-                        <li>Обучение сотрудников киберграмотности</li>
-                        <li>План реагирования на инциденты</li>
-                        <li>Регулярные аудиты безопасности</li>
-                    </ul>
-                </div>
-                
-                <div class="protection-card">
-                    <h3>Персональная защита</h3>
-                    <ul>
-                        <li>Использование менеджеров паролей (Bitwarden, 1Password)</li>
-                        <li>Аппаратные ключи безопасности (YubiKey, Titan)</li>
-                        <li>Виртуальные карты для онлайн-платежей</li>
-                        <li>Регулярная проверка утечек данных (Have I Been Pwned)</li>
-                    </ul>
+                <div class="card-grid">
+                    <div class="protection-card">
+                        <h3><i class="fas fa-server"></i>Технические меры</h3>
+                        <ul>
+                            <li>Многофакторная аутентификация (MFA) для всех сервисов</li>
+                            <li>Регулярное обновление ПО и систем безопасности</li>
+                            <li>Шифрование данных как в хранилищах, так и при передаче</li>
+                            <li>Системы обнаружения и предотвращения вторжений (IDS/IPS)</li>
+                            <li>Сегментация сети для ограничения lateral movement</li>
+                            <li>DLP-системы для предотвращения утечек данных</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="protection-card">
+                        <h3><i class="fas fa-building"></i>Организационные меры</h3>
+                        <ul>
+                            <li>Политика регулярного резервного копирования (правило 3-2-1)</li>
+                            <li>Обучение сотрудников киберграмотности (включая симуляции фишинга)</li>
+                            <li>План реагирования на инциденты (Incident Response Plan)</li>
+                            <li>Регулярные аудиты безопасности и пентесты</li>
+                            <li>Внедрение Zero Trust архитектуры</li>
+                            <li>Управление привилегированными доступами (PAM)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="protection-card">
+                        <h3><i class="fas fa-user-shield"></i>Персональная защита</h3>
+                        <ul>
+                            <li>Использование менеджеров паролей (Bitwarden, 1Password)</li>
+                            <li>Аппаратные ключи безопасности (YubiKey, Titan)</li>
+                            <li>Виртуальные карты для онлайн-платежей</li>
+                            <li>Регулярная проверка утечек данных (Have I Been Pwned)</li>
+                            <li>VPN для публичных сетей Wi-Fi</li>
+                            <li>Защита smart-устройств в доме</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
         
         <section class="info-section">
             <div class="info-card">
-                <h2>Тенденции 2024</h2>
-                <div class="threat-card">
-                    <h3>AI-атаки</h3>
-                    <p>Использование искусственного интеллекта для:</p>
-                    <ul>
-                        <li>Генерации убедительных фишинговых сообщений</li>
-                        <li>Обхода CAPTCHA и систем распознавания</li>
-                        <li>Автоматизации поиска уязвимостей</li>
-                    </ul>
-                </div>
+                <h2><i class="fas fa-robot"></i>Тенденции 2024</h2>
                 
-                <div class="protection-card">
-                    <h3>AI-защита</h3>
-                    <p>Применение ИИ в защитных системах:</p>
-                    <ul>
-                        <li>Анализ поведения пользователей</li>
-                        <li>Прогнозирование атак</li>
-                        <li>Автоматическое исправление уязвимостей</li>
-                    </ul>
+                <div class="card-grid">
+                    <div class="trend-card">
+                        <h3><i class="fas fa-brain"></i>AI-атаки</h3>
+                        <p>Использование искусственного интеллекта для:</p>
+                        <ul>
+                            <li>Генерации убедительных фишинговых сообщений</li>
+                            <li>Обхода CAPTCHA и систем распознавания</li>
+                            <li>Автоматизации поиска уязвимостей</li>
+                            <li>Создания deepfake-аудио для социальной инженерии</li>
+                            <li>Адаптивных malware, меняющих поведение</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="trend-card">
+                        <h3><i class="fas fa-shield-virus"></i>AI-защита</h3>
+                        <p>Применение ИИ в защитных системах:</p>
+                        <ul>
+                            <li>Анализ поведения пользователей (UEBA)</li>
+                            <li>Прогнозирование атак на основе паттернов</li>
+                            <li>Автоматическое исправление уязвимостей</li>
+                            <li>Обнаружение аномалий в реальном времени</li>
+                            <li>Автоматизированное реагирование на угрозы</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="trend-card">
+                        <h3><i class="fas fa-question-circle"></i>Новые вызовы</h3>
+                        <p>Появляющиеся угрозы:</p>
+                        <ul>
+                            <li>Атаки на системы квантовой криптографии</li>
+                            <li>Эксплойты для 6G сетей</li>
+                            <li>Угрозы метавселенных</li>
+                            <li>Взломы биометрических систем</li>
+                            <li>Манипуляции нейроинтерфейсами</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
+        
+        <section class="info-section">
+            <div class="info-card">
+                <h2><i class="fas fa-history"></i>История кибератак</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>1988 - Червь Морриса</h3>
+                        <p>Первый крупный интернет-червь, заразивший около 10% подключенных к интернету компьютеров (тогда около 6000 машин).</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h3>2010 - Stuxnet</h3>
+                        <p>Сложный червь, атаковавший промышленные системы SCADA и повредивший центрифуги в Иране.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h3>2017 - WannaCry</h3>
+                        <p>Глобальная ransomware-атака, затронувшая более 200 000 компьютеров в 150 странах.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h3>2020 - SolarWinds</h3>
+                        <p>Масштабная цепочка атак через обновление ПО, затронувшая правительственные учреждения США.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="newsletter">
+            <h3><i class="fas fa-envelope"></i> Подпишитесь на кибербезопасность</h3>
+            <p>Получайте свежие новости о киберугрозах и советы по защите прямо на почту</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Ваш email" required>
+                <button type="submit">Подписаться</button>
+            </form>
+        </div>
     </main>
 
     <footer>
-        <div class="container">
-            <p>@notnaturalananas. Все материалы защищены.</p>
+        <div class="container footer-content">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-vk"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+            <p>© 2024 КиберЗащита. Все материалы защищены.</p>
+            <p><a href="#" style="color: var(--secondary); text-decoration: none;">Политика конфиденциальности</a> | <a href="#" style="color: var(--secondary); text-decoration: none;">Контакты</a></p>
         </div>
     </footer>
 </body>
